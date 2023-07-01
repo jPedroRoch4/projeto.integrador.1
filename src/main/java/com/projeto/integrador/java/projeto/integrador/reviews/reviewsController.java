@@ -10,20 +10,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/reviews")
-public class reviewsController {
+public class ReviewsController {
 
 	@Autowired
-	private reviewsRepository reviewsRepository;
+	private ReviewsRepository Repository;
 
 	@GetMapping
-	public List<reviews> getAll() {
-		return reviewsRepository.findAll();
+	public List<Reviews> getAll() {
+		return Repository.findAll();
 	}
 
 	@GetMapping("/{id}")
-	public reviews getOne(@PathVariable Long id) {
-		if (reviewsRepository.existsById(id)) {
-			return reviewsRepository.findById(id).get();
+	public Reviews getOne(@PathVariable Long id) {
+		if (Repository.existsById(id)) {
+			return Repository.findById(id).get();
 		}
 		return null;
 	}

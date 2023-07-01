@@ -5,40 +5,26 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-public class reviews {
+public class Reviews {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
 	private Long id;
-
-	@Column(length = 127)
-	private String autorname;
-
-	@Column(length = 127)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column
+	private Long uid;
+	private Long autorname;
 	private String autorphoto;
-
-	@Column(length = 127)
-	private String uid;
-
-	@Column(length = 255)
+	private String autoremail;
 	private String date;
-
-	@Column(length = 255)
+	@Column(columnDefinition = "LONGTEXT", length = 65535)
 	private String review;
-
-	@Column(length = 31)
-	private String status = "on";
+	@Column(length = 3)
+	private String status;
 
 	public Long getId() {
 		return id;
@@ -48,11 +34,19 @@ public class reviews {
 		this.id = id;
 	}
 
-	public String getAutorname() {
+	public Long getUid() {
+		return uid;
+	}
+
+	public void setUid(Long uid) {
+		this.uid = uid;
+	}
+
+	public Long getAutorname() {
 		return autorname;
 	}
 
-	public void setAutorname(String autorname) {
+	public void setAutorname(Long autorname) {
 		this.autorname = autorname;
 	}
 
@@ -64,12 +58,12 @@ public class reviews {
 		this.autorphoto = autorphoto;
 	}
 
-	public String getUid() {
-		return uid;
+	public String getAutoremail() {
+		return autoremail;
 	}
 
-	public void setUid(String uid) {
-		this.uid = uid;
+	public void setAutoremail(String autoremail) {
+		this.autoremail = autoremail;
 	}
 
 	public String getDate() {

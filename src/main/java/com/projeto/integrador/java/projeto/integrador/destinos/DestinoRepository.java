@@ -14,13 +14,20 @@ import jakarta.transaction.Transactional;
 @Repository
 public interface DestinoRepository extends JpaRepository<Destino, Long> {
 
+	// SQL para listar destinos que estejam com o status "on" e ordernar em ordem descrecente.
+	
 	@Query(value = "SELECT * FROM DESTINO WHERE status = 'on' ORDER BY data DESC", nativeQuery = true)
 	List<Destino> pegaTodosDestinos();
 
+	// SQL para ser capaz de poder fazer patch e atualizar a quantidade de views em um post de "Destinos".
+	
 	@Modifying
 	@Query(value = "UPDATE destino SET views = views + 1 WHERE id = :id", nativeQuery = true)
 	void atualizaViews(@Param("id") Long id);
 
+	// SQL para selecionar os "Destinos" com o maior numero de visualizações e ordenar em uma lista pela ordem descrecente.
+	// o "LIMIT" determina o limite de "Destinos" que irá colocar na lista.
+	
 	@Query(value = "SELECT * FROM DESTINO WHERE status = 'on' ORDER BY views DESC LIMIT :limit", nativeQuery = true)
 	List<Destino> pegaMaisVistos(@Param("limit") int limit);
 

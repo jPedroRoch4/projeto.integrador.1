@@ -5,45 +5,26 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-public class comentarios {
+public class Comentarios {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@Column(length = 127)
+	@Id
+	@Column
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long uid;
+	@Column(length = 3)
+	private String status;
+	@Column(columnDefinition = "LONGTEXT", length = 65535)
+	private String comentario;
 	private String autorname;
-
-	@Column(length = 255)
 	private String autorphoto;
-
-	@Column(length = 255)
 	private String autoremail;
-
-	@Column(length = 255)
-	private String uid;
-
-	@Column(length = 127)
 	private String date;
-
-	@Lob
-	@Column(columnDefinition = "INTEGER")
-	private String destino;
-
-	@Column(length = 31)
-	private String status = "on";
 
 	public Long getId() {
 		return id;
@@ -51,6 +32,30 @@ public class comentarios {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Long getUid() {
+		return uid;
+	}
+
+	public void setUid(Long uid) {
+		this.uid = uid;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
 	}
 
 	public String getAutorname() {
@@ -77,36 +82,12 @@ public class comentarios {
 		this.autoremail = autoremail;
 	}
 
-	public String getUid() {
-		return uid;
-	}
-
-	public void setUid(String uid) {
-		this.uid = uid;
-	}
-
 	public String getDate() {
 		return date;
 	}
 
 	public void setDate(String date) {
 		this.date = date;
-	}
-
-	public String getDestino() {
-		return destino;
-	}
-
-	public void setDestino(String destino) {
-		this.destino = destino;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
 	}
 
 }

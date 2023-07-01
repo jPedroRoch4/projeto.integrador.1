@@ -13,3 +13,12 @@ INSERT INTO destino (id, data, titulo, imagem, resumo, descricao, views, status)
 INSERT INTO destino (id, data, titulo, imagem, resumo, descricao, views, status) VALUES
 ('5', '2023-06-01 10:11:16', 'Visitando Senador Camará', 'https://picsum.photos/198', 'Como foi conhecer a zona rural mais distante do mundo.', 'Lorem ipsum....', '0', 'on');
 
+
+
+
+
+
+
+
+
+
