@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class ReviewsController {
 
 	@Autowired
-	private ReviewsRepository Repository;
+	private ReviewsRepository repository;
 
 	@GetMapping
 	public List<Reviews> getAll() {
-		return Repository.findAll();
+		return repository.findAll();
 	}
 
 	@GetMapping("/{id}")
 	public Reviews getOne(@PathVariable Long id) {
-		if (Repository.existsById(id)) {
-			return Repository.findById(id).get();
+		if (repository.existsById(id)) {
+			return repository.findById(id).get();
 		}
 		return null;
 	}

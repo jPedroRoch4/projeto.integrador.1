@@ -12,12 +12,12 @@ import jakarta.transaction.Transactional;
 
 @Transactional
 @Repository
-public interface DestinoRepository extends JpaRepository<Destino, Long> {
+public interface DestinosRepository extends JpaRepository<Destinos, Long> {
 
 	// SQL para listar destinos que estejam com o status "on" e ordernar em ordem descrecente.
 	
 	@Query(value = "SELECT * FROM DESTINO WHERE status = 'on' ORDER BY data DESC", nativeQuery = true)
-	List<Destino> pegaTodosDestinos();
+	List<Destinos> pegaTodosDestinos();
 
 	// SQL para ser capaz de poder fazer patch e atualizar a quantidade de views em um post de "Destinos".
 	
@@ -29,6 +29,6 @@ public interface DestinoRepository extends JpaRepository<Destino, Long> {
 	// o "LIMIT" determina o limite de "Destinos" que irá colocar na lista.
 	
 	@Query(value = "SELECT * FROM DESTINO WHERE status = 'on' ORDER BY views DESC LIMIT :limit", nativeQuery = true)
-	List<Destino> pegaMaisVistos(@Param("limit") int limit);
+	List<Destinos> pegaMaisVistos(@Param("limit") int limit);
 
 }

@@ -13,22 +13,22 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 @RestController
 @RequestMapping("/destinos")
-public class DestinoController {
+public class DestinosController {
 
 	@Autowired
-	private DestinoRepository repository;
+	private DestinosRepository repository;
 
 	// Exemplo para receber todos os destinos:
 	// http://localhost:8080/destinos
 	@GetMapping
-	public List<Destino> getAll() {
+	public List<Destinos> getAll() {
 		return repository.pegaTodosDestinos();
 	}
 
 	// Exemplo para receber apenas um destino de sua preferência:
 	// http://localhost:8080/destinos/ (insira um ID de sua escolha.) ← ← ←
 	@GetMapping("/{id}")
-	public Destino getOne(@PathVariable Long id) {
+	public Destinos getOne(@PathVariable Long id) {
 		if (repository.existsById(id)) {
 			return repository.findById(id).get();
 		}
@@ -45,7 +45,7 @@ public class DestinoController {
 	// Exemplo para listar os 5 destinos mais visualizados:
 	// http://localhost:8080/destinos/viewed/5 ← ← ← numero desejado de destinos para visualizar.
 	@GetMapping("/viewed/{limit}")
-	public List<Destino> getMostViewed(@PathVariable int limit){
+	public List<Destinos> getMostViewed(@PathVariable int limit){
 		return repository.pegaMaisVistos(limit);
 	}
 }

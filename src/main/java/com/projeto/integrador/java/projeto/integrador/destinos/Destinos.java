@@ -7,7 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Destino {
+public class Destinos {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
